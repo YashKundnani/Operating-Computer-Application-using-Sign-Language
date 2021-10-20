@@ -33,7 +33,7 @@ while(capture.isOpened()):
        
                 
         for (x,y,w,h) in point_sign:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,255),2)
+                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
                 roi_gray=gray[y:y+h,x:x+w]
                 roi_color=img[y:y+h,x:x+w]
                 ha=2
@@ -41,41 +41,31 @@ while(capture.isOpened()):
                 print("Slide Zoomed In!")
 
         for (x,y,w,h) in fin_sign:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,0),2)
+                cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
                 roi_gray=gray[y:y+h,x:x+w]
                 roi_color=img[y:y+h,x:x+w]
                 fin_crop(crop_img,img)
-                time.sleep(0.5)
+                #time.sleep(0.5)
                 pyautogui.press('pagedown')
                 print("Slide Moved Forward!")
 
         for (x,y,w,h) in thumbdown_sign:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+                cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
                 roi_gray=gray[y:y+h,x:x+w]
                 roi_color=img[y:y+h,x:x+w]
                 ha=5
                 t_crop(crop_img,img)
-                time.sleep(0.5)
+                #time.sleep(0.5)
                 pyautogui.press('pageup')
                 print("Slide Moved Backward!")
 
         for (x,y,w,h) in hand_sign:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+                cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,0),2)
                 roi_gray=gray[y:y+h,x:x+w]
                 roi_color=img[y:y+h,x:x+w]
                 hand_crop(crop_img,img)
-                time.sleep(0.5)
+                #time.sleep(0.5)
                 print("Slide Zoomed Out!")
-
-        '''for (x,y,w,h) in fist:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-                roi_gray=gray[y:y+h,x:x+w]
-                roi_color=img[y:y+h,x:x+w]
-                #crop_img=img[y:y+h,x:x+w]
-                hand_crop(crop_img,img)
-                time.sleep(0.5)
-                print("out of FIST")'''
-
 
                 
         cv2.imshow('Feed',img)
