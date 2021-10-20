@@ -28,7 +28,7 @@ while(capture.isOpened()):
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         point_sign=pointCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3,flags=0, minSize=(100,80))
         fin_sign=finCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3,flags=0, minSize=(100,80))
-        hand_sign=handCascade.detectMultiScale(gray,1.1, 5)
+        hand_sign=handCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5,flags=0, minSize=(100,80))
         thumbdown_sign=thumbdownCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3,flags=0, minSize=(100,80))
        
                 
