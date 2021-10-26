@@ -7,15 +7,18 @@ import time
 import pyautogui
 import image_cleanup
 
+os.chdir("C:\Users\yatin\Desktop\Operating-Computer-Application-using-Sign-Language-main\PPT-Control")
 def hand_crop(crop_img,img):
     grey = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
     
     # applying gaussian blur
     # applying gaussian blur
-    gauss_blur = image_cleanup.gaussian_method(grey)
+    value = (35, 35)
+    gauss_blur = cv2.GaussianBlur(grey, value, 0)
 
     # thresholding: Otsu's Binarization method
-    thresh_img = image_cleanup.otsu_method(gauss_blur)
+    _, thresh_img = cv2.threshold(gauss_blur, 127, 255,
+                               cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
 
     # show thresholded image
     cv2.imshow('Thresholded', thresh_img)
